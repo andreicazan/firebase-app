@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "fir-demo-d5e7a": {
+      "hosting": {
+        "firebase-app": [
+          "fir-demo-d5e7a"
+        ]
+      }
+    }
+  }
+}

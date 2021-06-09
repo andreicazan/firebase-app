@@ -1,0 +1,38 @@
+<div class="centered">
+  <p class="font-weight-bold">Register</p>
+  <form #formData='ngForm' (ngSubmit)="onSubmit(formData)">
+
+    <div [formGroup]="userEmails" class="mb-3">
+      <label>Email address</label>
+      
+      <input (ngModel)="email" 
+      type="email" class="form-control" 
+      name="email" placeholder="Enter email" formControlName="registerEmail"
+        [class.is-invalid]="userEmails.get('registerEmail').invalid && userEmails.get('registerEmail').touched">
+    
+      <div *ngIf="(regEmail.invalid && regEmail.touched) || regEmail.dirty">
+        <small *ngIf="regEmail.errors?.required" class="text-danger">Email is required</small>
+        <small *ngIf="regEmail.errors?.pattern" class="text-danger">Please provide a valid email address</small>
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <label>Password</label>
+      <input type="password" class="form-control" (ngModel)="password" name="password" placeholder="Enter password">
+    </div>
+
+    <div class="mb-3">
+      <button type="submit" [disabled]="!formData.valid" class="btn btn-primary">Create Account</button>
+    </div>
+
+    <div class="mb-3">
+      <button (click)="loginGoogle()" class="btn btn-dark">Signup With Google</button>
+    </div>
+
+    <div class="btn-toolbar"><label>Already have an account?</label>
+      <a class="btn btn-primary btn-sm" routerLink="/email-login" routerLinkActive="active">Login</a>
+    </div>
+  </form>
+</div>
+
+ 

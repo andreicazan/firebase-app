@@ -1,0 +1,44 @@
+<ais-instantsearch [config]="config">
+  <ais-search-box placeholder="Try searching..." class='search-box'></ais-search-box>
+  <hr>
+  <ais-hits>
+    <ng-template let-hits="hits">
+
+      <ol class="ais-Hits-list">
+        <div *ngFor="let hit of hits" class="ais-Hits-item">
+
+          <div class="list-group">
+            <a class="list-group-item list-group-item-action flex-column align-items-start">
+              <div class="d-flex w-100 justify-content-between">
+                <h5 class="mb-2">{{ hit.doctorName }}</h5>
+              </div>
+              <p class="mb-2">Category : {{ hit.category }}</p>
+              <p class="mb-2">Rating : {{ hit.ratingAverage}}</p>
+
+              <button class='btn btn-info' (click)="getDoctorReviews(hit.doctorID)">Show Reviews</button>
+              <button class='btn btn-secondary' (click)="insertReview(hit.doctorID)">Write Review</button>
+            </a>
+          </div>
+
+        </div>
+      </ol>
+
+    </ng-template>
+
+  </ais-hits>
+</ais-instantsearch>
+
+<div *ngIf="showDivCondition" class="modal-body">
+  <hr>
+  <div class="card bg-light mb-3" style="width: 18rem;">
+    <div *ngFor="let review of Reviews" class="row">
+      <div class="card-body">
+
+      <h5 class="card-text">Doctor : {{ review.doctorName }}</h5>
+      <p class="card-text"><b>Rating</b> : {{ review.rating }}</p>
+      <p class="card-text"><b>Patient</b> : {{ review.userName }}</p>
+      <p class="card-text"><b>Message</b> : {{ review.message }}</p>
+    </div>
+  </div>
+</div>
+</div>

@@ -1,0 +1,41 @@
+<ng-template #content let-modal>
+    <div class="modal-header">
+        
+
+      <h4 class="modal-title" id="modal-basic-title">All Reviews</h4>
+      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+
+    </div>
+
+    <div class="modal-body">
+        
+        <div *ngIf="showReviews" class="list-group">
+            <div *ngFor="let review of Reviews" class="row">
+              <a class="list-group-item list-group-item-action flex-column align-items-start">
+                <div class="d-flex w-100 justify-content-between">
+                  <h5 class="mb-2">{{ review.doctorName }}</h5>
+                </div>
+                <p class="mb-2">Rating : {{ review.rating }}</p>
+                <p class="mb-2">{{ review.userName }}</p>
+                <p class="mb-2">{{ review.message }}</p>
+              </a>
+            </div>
+          </div>
+        
+    </div>
+
+    <div class="modal-footer">
+
+      <button type="button" class="btn btn-outline-primary" >Write</button>
+      <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Save</button>
+
+    </div>
+
+
+  </ng-template>
+  
+  <button class="btn btn-lg btn-outline-primary" (click)="open(content)">Launch demo modal</button>
+  
+  

@@ -1,0 +1,28 @@
+.search-box{
+    width: 100%;
+    margin: 4px auto;
+    text-align: center;
+    display: inline-block;
+    -webkit-transition: width 0.4s ease-in-out;
+  transition: width 0.4s ease-in-out;
+}
+
+.rating-list {
+    display: inline-block;
+    list-style: none;
+}
+.rating-list li {
+    font-size: 20px;
+    float: right;
+    color: #ddd;
+    padding: 10px 5px;
+}
+.rating-list li:hover {
+    color: #ffd700;
+}
+.rating-list li:hover ~ li {
+    color: #ffd700;
+}
+.rating-list li.selected {
+    color: #ffd700;
+}
