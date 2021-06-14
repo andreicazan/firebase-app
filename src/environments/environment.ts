@@ -13,5 +13,5 @@ export const environment = {
   algolia: {
     appID: 'RX0513CCJP',
     apiKey: '8c63b17a39153fb510c47a45140c5b12'
-  }
+  },
 };

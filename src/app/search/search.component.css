@@ -26,3 +26,7 @@
 .rating-list li.selected {
     color: #ffd700;
 }
+
+.card-group{
+    display: flex;
+}

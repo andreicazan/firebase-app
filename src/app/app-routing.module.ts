@@ -1,4 +1,4 @@
-import { ReviewComponent } from './review/review.component';
+import { ReviewComponent } from './review-list/review-list.component';
 import { ProductListComponent } from './basics-angular/product-list/product-list.component';
 import { SearchComponent } from './search/search.component';
 import { SignupComponent } from './signup/signup.component';
@@ -21,7 +21,7 @@ const routes: Routes = [
   { path: 'signup', component: SignupComponent },
   { path: 'search', component: SearchComponent },
   { path: 'list', component: ProductListComponent },
-  { path: 'review', component: ReviewComponent },
+  { path: 'review/:id', component: ReviewComponent },
 
   { path: 'articles', component: ArticlesComponent },
   { path: 'articles/:id', component: ArticleComponent },

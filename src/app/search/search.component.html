@@ -15,8 +15,8 @@
               <p class="mb-2">Category : {{ hit.category }}</p>
               <p class="mb-2">Rating : {{ hit.ratingAverage}}</p>
 
-              <button class='btn btn-info' (click)="getDoctorReviews(hit.doctorID)">Show Reviews</button>
-              <button class='btn btn-secondary' (click)="insertReview(hit.doctorID)">Write Review</button>
+              <button class='btn btn-info' [routerLink]= "['/review', hit.doctorID]">Show Reviews</button>
+              <button class='btn btn-secondary' (click)="open(content, hit.doctorID)">Write Review</button>
             </a>
           </div>
 
@@ -28,17 +28,47 @@
   </ais-hits>
 </ais-instantsearch>
 
-<div *ngIf="showDivCondition" class="modal-body">
-  <hr>
-  <div class="card bg-light mb-3" style="width: 18rem;">
-    <div *ngFor="let review of Reviews" class="row">
-      <div class="card-body">
 
-      <h5 class="card-text">Doctor : {{ review.doctorName }}</h5>
-      <p class="card-text"><b>Rating</b> : {{ review.rating }}</p>
-      <p class="card-text"><b>Patient</b> : {{ review.userName }}</p>
-      <p class="card-text"><b>Message</b> : {{ review.message }}</p>
-    </div>
+<!-- Popup -->
+<ng-template #content let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Write a review</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
   </div>
-</div>
-</div>
+
+  <div class="modal-body">
+
+    <form [formGroup] = "writeReviewForm" (ngSubmit)="onSubmit()">
+      <label for="doctorName">Doctor Name</label>
+      <div class="input-group mb-3">
+        <input id="doctorName" type="text" formControlName="doctorName" >
+      </div>
+	  
+	  <label for="rating">Rating</label><br>
+    <output for="rating">{{ rating.value}}</output>
+    <div class="input-group mb-3">
+      <input type="range" id="rating" #rating min="1" max="5" formControlName="rating" value="3">
+      </div>
+      
+      <label for="patientName">Patient Name</label>
+      <div class="input-group mb-3">
+        <input id="patientName" type="text" formControlName="patientName" >
+      </div>
+	  
+	  <label for="message">Message</label>
+      <div class="input-group mb-3">
+        <input id="message" type="text" formControlName="message">
+      </div>
+
+      <div class="input-group-append">
+        <button class="btn btn-primary" type="submit" (click)="modal.close('Save click')">Post</button>
+      </div>
+    </form>
+      
+  </div>
+    
+</ng-template>
+
+

@@ -1,0 +1,28 @@
+<ais-instantsearch [config]="config">
+  <ais-search-box placeholder="Try searching..." class='search-box'>
+    <hr>
+    <ais-hits>
+      <ng-template let-hits="hits">
+        <ol class="ais-Hits-list">
+          <div *ngFor="let hit of hits" class="ais-Hits-item">
+  
+            <div class="list-group">
+              <a class="list-group-item list-group-item-action flex-column align-items-start">
+                <div class="d-flex w-100 justify-content-between">
+                  <h5 class="mb-2">Doctor : {{ hit.objectID }}</h5>
+                </div>
+                
+  
+                
+              </a>
+            </div>
+  
+          </div>
+        </ol>
+    
+</ng-template>
+
+</ais-hits>
+</ais-search-box>
+</ais-instantsearch>
+

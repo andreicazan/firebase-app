@@ -21,7 +21,7 @@ import { TopBarComponent } from './basics-angular/top-bar/top-bar.component';
 import { ArticlesComponent } from './basics-angular/articles/articles.component';
 import { ArticleComponent } from './basics-angular/article/article.component';
 import { DetailAnimalComponent } from './basics-angular/detail-animal/detail-animal.component';
-import { ReviewComponent } from './review/review.component';
+import { ReviewComponent } from './review-list/review-list.component';
 import { NgAisModule } from 'angular-instantsearch';
 
 
