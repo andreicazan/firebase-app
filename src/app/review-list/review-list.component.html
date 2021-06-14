@@ -9,8 +9,11 @@
             <div class="list-group">
               <a class="list-group-item list-group-item-action flex-column align-items-start">
                 <div class="d-flex w-100 justify-content-between">
-                  <h5 class="mb-2">Doctor : {{ hit.objectID }}</h5>
+                   <h5 class="mb-2">Doctor : {{ hit.doctorName }}</h5>
                 </div>
+                <p class="card-text"><b>Rating</b> : {{ hit.rating }}</p>
+                <p class="card-text"><b>Patient</b> : {{ hit.userName }}</p>
+                <p class="card-text"><b>Message</b> : {{ hit.message }}</p>
                 
   
                 
