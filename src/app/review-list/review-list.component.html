@@ -1,31 +1,33 @@
-<ais-instantsearch [config]="config">
-  <ais-search-box placeholder="Try searching..." class='search-box'>
-    <hr>
-    <ais-hits>
-      <ng-template let-hits="hits">
-        <ol class="ais-Hits-list">
-          <div *ngFor="let hit of hits" class="ais-Hits-item">
+<div class="row">
+  <div class="col">
+    <div ngbDropdown class="d-inline-block">
+      <button class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle>Filter</button>
+      <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+        <button ngbDropdownItem (click)="getDataByRating('5')">5</button>
+        <button ngbDropdownItem (click)="getDataByRating('4')">4</button>
+        <button ngbDropdownItem (click)="getDataByRating('3')">3</button>
+        <button ngbDropdownItem (click)="getDataByRating('2')">2</button>
+        <button ngbDropdownItem (click)="getDataByRating('1')">1</button>
+        <button ngbDropdownItem (click)="getDataByDate('desc')">Newest</button>
+        <button ngbDropdownItem (click)="getDataByDate('asc')">Oldest</button>
+      </div>
+    </div>
+    </div>
+    </div>
   
-            <div class="list-group">
-              <a class="list-group-item list-group-item-action flex-column align-items-start">
-                <div class="d-flex w-100 justify-content-between">
-                   <h5 class="mb-2">Doctor : {{ hit.doctorName }}</h5>
-                </div>
-                <p class="card-text"><b>Rating</b> : {{ hit.rating }}</p>
-                <p class="card-text"><b>Patient</b> : {{ hit.userName }}</p>
-                <p class="card-text"><b>Message</b> : {{ hit.message }}</p>
-                
-  
-                
-              </a>
-            </div>
-  
-          </div>
-        </ol>
-    
-</ng-template>
 
-</ais-hits>
-</ais-search-box>
-</ais-instantsearch>
-
+<div *ngFor="let review of Reviews" class="ais-Hits-item">
+  
+  <div class="list-group">
+    <a class="list-group-item list-group-item-action flex-column align-items-start">
+      <div class="d-flex w-100 justify-content-between">
+         <h5 class="mb-2">Doctor : {{ review.doctorName }}</h5>
+      </div>
+      <p class="card-text"><b>Rating</b> : {{ review.rating }}</p>
+      <p class="card-text"><b>Patient</b> : {{ review.userName }}</p>
+      <p class="card-text"><b>Message</b> : {{ review.message }}</p>
+      <p class="card-text"><b>Date</b> : {{ review.date.toDate() | date:'yyyy/MM/dd'}}</p>
+      
+    </a>
+  </div>
+</div>

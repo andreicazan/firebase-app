@@ -38,7 +38,7 @@ import { NgAisModule } from 'angular-instantsearch';
     ArticlesComponent,
     ArticleComponent,
     DetailAnimalComponent,
-    ReviewComponent
+    ReviewComponent,
   ],
   imports: [
     BrowserModule,
@@ -51,7 +51,8 @@ import { NgAisModule } from 'angular-instantsearch';
     AngularFireStorageModule,
     AngularFireAuthModule,
     NgbModule,
-    NgAisModule.forRoot()
+    NgAisModule.forRoot(),
+    
     
   ],
   providers: [],
