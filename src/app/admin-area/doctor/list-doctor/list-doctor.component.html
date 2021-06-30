@@ -1,0 +1,14 @@
+<button routerLink="/admin">Back</button>
+<button routerLink="/create-doctor">Add Doctor</button>
+<table class="table">
+    <tbody>
+        <tr *ngFor="let doctor of Doctors; let i = index">
+            <th scope="row">{{ i + 1 }}</th>
+          <td>{{ doctor.doctorID }}</td>
+          <td>{{ doctor.doctorName }}</td>
+          <td>{{ doctor.category }}</td>
+          <td>
+            <span (click)="removeUser(doctor)" class="text-danger">Delete</span> &nbsp;
+            <span routerLink="['/edit-doctor', doctor.doctorID" class="text-primary">Edit</span>
+          </td>
+</table>

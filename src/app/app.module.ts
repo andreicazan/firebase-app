@@ -16,15 +16,21 @@ import { EmailLoginComponent } from './email-login/email-login.component';
 import { SignupComponent } from './signup/signup.component';
 import { SearchComponent } from './search/search.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { ProductListComponent } from './basics-angular/product-list/product-list.component';
-import { TopBarComponent } from './basics-angular/top-bar/top-bar.component';
-import { ArticlesComponent } from './basics-angular/articles/articles.component';
-import { ArticleComponent } from './basics-angular/article/article.component';
-import { DetailAnimalComponent } from './basics-angular/detail-animal/detail-animal.component';
 import { ReviewComponent } from './review-list/review-list.component';
 import { NgAisModule } from 'angular-instantsearch';
-
-
+import { DatePipe } from '@angular/common'
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NgxChartsModule } from '@swimlane/ngx-charts';
+import { AdminPanelComponent } from './admin-panel/admin-panel.component';
+import { ListReviewComponent } from './admin-area/reviews/list-review/list-review.component';
+import { EditReviewComponent } from './admin-area/reviews/edit-review/edit-review.component';
+import { CreateReviewComponent } from './admin-area/reviews/create-review/create-review.component';
+import { CreateUserComponent } from './admin-area/user/create-user/create-user.component';
+import { ListUserComponent } from './admin-area/user/list-user/list-user.component';
+import { EditUserComponent } from './admin-area/user/edit-user/edit-user.component';
+import { ListDoctorComponent } from './admin-area/doctor/list-doctor/list-doctor.component';
+import { EditDoctorComponent } from './admin-area/doctor/edit-doctor/edit-doctor.component';
+import { CreateDoctorComponent } from './admin-area/doctor/create-doctor/create-doctor.component';
 
 @NgModule({
   declarations: [
@@ -33,12 +39,17 @@ import { NgAisModule } from 'angular-instantsearch';
     SignupComponent,
     SearchComponent,
     FilterPipe,
-    ProductListComponent,
-    TopBarComponent,
-    ArticlesComponent,
-    ArticleComponent,
-    DetailAnimalComponent,
     ReviewComponent,
+    AdminPanelComponent,
+    ListReviewComponent,
+    EditReviewComponent,
+    CreateReviewComponent,
+    CreateUserComponent,
+    ListUserComponent,
+    EditUserComponent,
+    ListDoctorComponent,
+    EditDoctorComponent,
+    CreateDoctorComponent
   ],
   imports: [
     BrowserModule,
@@ -52,10 +63,12 @@ import { NgAisModule } from 'angular-instantsearch';
     AngularFireAuthModule,
     NgbModule,
     NgAisModule.forRoot(),
-    
+    NgxChartsModule,
+    BrowserAnimationsModule
+   
     
   ],
-  providers: [],
+  providers: [ DatePipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

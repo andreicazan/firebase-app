@@ -6,3 +6,8 @@
     -webkit-transition: width 0.4s ease-in-out;
   transition: width 0.4s ease-in-out;
 }
+
+.ngx-charts-number-card{
+  display: inline-block;
+  margin:auto;
+}

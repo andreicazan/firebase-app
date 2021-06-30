@@ -8,6 +8,7 @@ import algoliasearch from 'algoliasearch/lite';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
+import { DatePipe } from '@angular/common';
 
 const searchClient = algoliasearch(
   'RX0513CCJP',
@@ -60,7 +61,8 @@ export class SearchComponent implements OnInit {
   constructor(
     private db: AngularFirestore,
     private modalService: NgbModal,
-    public router: Router) {
+    public router: Router,
+    public datepipe: DatePipe) {
 
       
   }
@@ -121,6 +123,7 @@ export class SearchComponent implements OnInit {
     const rating = this.writeReviewForm.get('rating').value;
     const userName = this.writeReviewForm.get('patientName').value;
     const message = this.writeReviewForm.get('message').value;
+    const date = new Date();
 
    this.db.collection("reviews")
     .add({
@@ -128,7 +131,8 @@ export class SearchComponent implements OnInit {
       doctorName,
       message,
       rating, 
-      userName, });
+      userName,
+      date });
    
 }
   

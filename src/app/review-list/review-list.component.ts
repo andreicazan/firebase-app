@@ -3,6 +3,11 @@ import { Component, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { Review } from '../model/Review';
 
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> 094e3b7 (Admin panel with Doctor Create and Delete Options)
 
 @Component({
   selector: 'app-review',
@@ -13,9 +18,17 @@ export class ReviewComponent implements OnInit {
   Reviews: Review[];
   sub: any;
 
+<<<<<<< HEAD
   constructor(
     private db: AngularFirestore,
     private route: ActivatedRoute) { }
+=======
+  
+  constructor(
+    private db: AngularFirestore,
+    private route: ActivatedRoute) {   
+    }
+>>>>>>> 094e3b7 (Admin panel with Doctor Create and Delete Options)
 
   globalCurrentDoctorID = '';
 
@@ -62,7 +75,7 @@ export class ReviewComponent implements OnInit {
     console.log('Date =|' + dateValue + '|');
     console.log('Ceva');
     console.log('Id= ' + this.globalCurrentDoctorID);
-    const order = '';
+    
 
       this.db
         .collection("reviews", ref => ref.where("doctorID", "==", this.globalCurrentDoctorID).orderBy('date', dateValue))
@@ -77,6 +90,13 @@ export class ReviewComponent implements OnInit {
         });
 
   }
+
+  
+
+  
+
+ 
+
 }
 
 

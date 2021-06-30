@@ -1,20 +1,48 @@
-<div class="row">
-  <div class="col">
-    <div ngbDropdown class="d-inline-block">
-      <button class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle>Filter</button>
-      <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+<div class="d-flex bg-light">
+
+  <!-- Filter-->
+  <div class="btn-group mr-3">
+
+    <div class="btn-group" ngbDropdown role="group">
+      <button class="btn btn-outline-primary" ngbDropdownToggle>Filter</button>
+      <div class="dropdown-menu" ngbDropdownMenu>
         <button ngbDropdownItem (click)="getDataByRating('5')">5</button>
         <button ngbDropdownItem (click)="getDataByRating('4')">4</button>
         <button ngbDropdownItem (click)="getDataByRating('3')">3</button>
         <button ngbDropdownItem (click)="getDataByRating('2')">2</button>
         <button ngbDropdownItem (click)="getDataByRating('1')">1</button>
+      </div>
+    </div>
+    <!-- Sort -->
+    <div class="btn-group" ngbDropdown role="group">
+      <button class="btn btn-outline-info" ngbDropdownToggle>Sort</button>
+      <div class="dropdown-menu" ngbDropdownMenu>
         <button ngbDropdownItem (click)="getDataByDate('desc')">Newest</button>
         <button ngbDropdownItem (click)="getDataByDate('asc')">Oldest</button>
       </div>
     </div>
-    </div>
-    </div>
-  
+
+  </div>
+</div>
+
+
+
+
+
+<!-- Display All Reviews -->
+<div *ngFor="let review of Reviews">
+
+  <div class="list-group">
+    <a class="list-group-item list-group-item-action flex-column align-items-start">
+
+      <p class="card-text"><b>Patient</b> : {{ review.userName }}</p>
+      <p class="card-text"><b>Rating</b> : {{ review.rating }}</p>
+      <p class="card-text"><b>Message</b> : {{ review.message }}</p>
+      <p class="card-text"><b>Date</b> : {{ review.date.toDate() | date:'yyyy/MM/dd'}}</p>
+
+    </a>
+  </div>
+</div>
 
 <div *ngFor="let review of Reviews" class="ais-Hits-item">
   

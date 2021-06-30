@@ -7,17 +7,15 @@
       <ol class="ais-Hits-list">
         <div *ngFor="let hit of hits" class="ais-Hits-item">
 
-          <div class="list-group">
-            <a class="list-group-item list-group-item-action flex-column align-items-start">
+          <div class="bg-white rounded shadow-sm p-4 mb-4 restaurant-detailed-ratings-and-reviews">
               <div class="d-flex w-100 justify-content-between">
                 <h5 class="mb-2">{{ hit.doctorName }}</h5>
               </div>
-              <p class="mb-2">Category : {{ hit.category }}</p>
+              <p class="mb-2">Speciality : {{ hit.category }}</p>
               <p class="mb-2">Rating : {{ hit.ratingAverage}}</p>
 
               <button class='btn btn-info' [routerLink]= "['/review', hit.doctorID]">Show Reviews</button>
               <button class='btn btn-secondary' (click)="open(content, hit.doctorID)">Write Review</button>
-            </a>
           </div>
 
         </div>
@@ -29,10 +27,11 @@
 </ais-instantsearch>
 
 
-<!-- Popup -->
+
+<!-- Popup Insert new Review -->
 <ng-template #content let-modal>
   <div class="modal-header">
-    <h4 class="modal-title" id="modal-basic-title">Write a review</h4>
+    <h4 class="modal-title" id="modal-basic-title">Write your review</h4>
     <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
       <span aria-hidden="true">&times;</span>
     </button>
@@ -43,32 +42,30 @@
     <form [formGroup] = "writeReviewForm" (ngSubmit)="onSubmit()">
       <label for="doctorName">Doctor Name</label>
       <div class="input-group mb-3">
-        <input id="doctorName" type="text" formControlName="doctorName" >
+        <input id="doctorName" type="text" formControlName="doctorName" style='width:50%'>
       </div>
 	  
 	  <label for="rating">Rating</label><br>
     <output for="rating">{{ rating.value}}</output>
     <div class="input-group mb-3">
-      <input type="range" id="rating" #rating min="1" max="5" formControlName="rating" value="3">
+      <input type="range" id="rating" #rating min="1" max="5" formControlName="rating" value="3" style='width:50%'> 
       </div>
       
       <label for="patientName">Patient Name</label>
       <div class="input-group mb-3">
-        <input id="patientName" type="text" formControlName="patientName" >
+        <input id="patientName" type="text" formControlName="patientName" style='width:50%'>
       </div>
 	  
 	  <label for="message">Message</label>
       <div class="input-group mb-3">
-        <input id="message" type="text" formControlName="message">
+        <textarea placeholder="Your Message" formControlName="message" cols="50" rows="6" style='width:100%'></textarea>
       </div>
 
-      <div class="input-group-append">
-        <button class="btn btn-primary" type="submit" (click)="modal.close('Save click')">Post</button>
+    <div class="input-group-append">
+        <button class="btn btn-primary" type="submit" (click)="modal.close('Save click')" style="width:30%">Post</button>
       </div>
     </form>
-      
-  </div>
-    
+      </div>    
 </ng-template>
 
 
