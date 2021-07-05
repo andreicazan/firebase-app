@@ -1,9 +1,12 @@
+<button routerLink="/signup" class="logOut btn btn-light">Log Out</button>
+
 <div class="d-flex bg-light">
 
   <!-- Filter-->
   <div class="btn-group mr-3">
 
     <div class="btn-group" ngbDropdown role="group">
+      <button class ="btn btn-outline-secondary" routerLink="/search">Back</button>
       <button class="btn btn-outline-primary" ngbDropdownToggle>Filter</button>
       <div class="dropdown-menu" ngbDropdownMenu>
         <button ngbDropdownItem (click)="getDataByRating('5')">5</button>
@@ -44,18 +47,3 @@
   </div>
 </div>
 
-<div *ngFor="let review of Reviews" class="ais-Hits-item">
-  
-  <div class="list-group">
-    <a class="list-group-item list-group-item-action flex-column align-items-start">
-      <div class="d-flex w-100 justify-content-between">
-         <h5 class="mb-2">Doctor : {{ review.doctorName }}</h5>
-      </div>
-      <p class="card-text"><b>Rating</b> : {{ review.rating }}</p>
-      <p class="card-text"><b>Patient</b> : {{ review.userName }}</p>
-      <p class="card-text"><b>Message</b> : {{ review.message }}</p>
-      <p class="card-text"><b>Date</b> : {{ review.date.toDate() | date:'yyyy/MM/dd'}}</p>
-      
-    </a>
-  </div>
-</div>

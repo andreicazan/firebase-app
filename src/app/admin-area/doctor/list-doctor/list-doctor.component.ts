@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { Doctor } from 'src/app/model/Doctor';
 
+
 @Component({
   selector: 'app-list-doctor',
   templateUrl: './list-doctor.component.html',
@@ -26,12 +27,11 @@ export class ListDoctorComponent implements OnInit {
       });
   }
 
-  removeUser(doctorID : any){
-    console.log('=' + doctorID)
-    // this.db.collection("doctors", ref => ref.where("doctorID", "==",doctorID))
-    // .doc()
-    // .delete()
+  removeDoctor = doctor => this.db.collection("doctors").doc(doctor.id).delete()
 
-  }
+
+   
+
+  
 
 }

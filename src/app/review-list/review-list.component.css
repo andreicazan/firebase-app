@@ -11,3 +11,9 @@
   display: inline-block;
   margin:auto;
 }
+
+.logOut{
+  position:fixed;
+  right:10px;
+  top:20px;
+}

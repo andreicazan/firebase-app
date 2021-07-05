@@ -1,4 +1,5 @@
 export class Review {
+    reviewID: string;
     doctorID: string;
     doctorName: string;
     userID: string;

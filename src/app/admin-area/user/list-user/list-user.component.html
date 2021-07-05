@@ -1,1 +1,16 @@
-<p>list-user works!</p>
+<button class="btn-secondary" routerLink="/admin">Back</button>
+<button class="btn-primary" routerLink="/create-user">Add User</button>
+<table class="table">
+    <tbody>
+        <tr *ngFor="let user of Users; let i = index">
+            <th scope="row">{{ i + 1 }}</th>
+          <td>{{ user.userID }}</td>
+          <td>{{ user.name }}</td>
+          <td>{{ user.email }}</td>
+          <td>{{ user.password }}</td>
+          <td>
+            <span (click)="removeUser(user)" class="text-danger">Delete</span> &nbsp;
+            
+            <span routerLink="/edit-user/{{user.userID}}" class="text-primary">Edit</span>
+          </td>
+</table>

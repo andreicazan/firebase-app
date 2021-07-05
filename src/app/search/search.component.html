@@ -1,30 +1,33 @@
-<ais-instantsearch [config]="config">
-  <ais-search-box placeholder="Try searching..." class='search-box'></ais-search-box>
-  <hr>
-  <ais-hits>
-    <ng-template let-hits="hits">
+<!-- Search bar -->
 
-      <ol class="ais-Hits-list">
-        <div *ngFor="let hit of hits" class="ais-Hits-item">
+<button style="position: fixed;"routerLink="/signup" class="logOut btn btn-light">Log Out</button>
 
-          <div class="bg-white rounded shadow-sm p-4 mb-4 restaurant-detailed-ratings-and-reviews">
-              <div class="d-flex w-100 justify-content-between">
-                <h5 class="mb-2">{{ hit.doctorName }}</h5>
-              </div>
-              <p class="mb-2">Speciality : {{ hit.category }}</p>
-              <p class="mb-2">Rating : {{ hit.ratingAverage}}</p>
+<div  class="search-box form-inline md-form mr-auto mb-4">
+  <fieldset>
+  <input  type="text" id="searchField" name="searchField"  class="mr-sm-8" placeholder="Search" [(ngModel)]="searchField">
+  <button type="button" class='btn btn-outline-secondary' (click)="onSearch()">Search</button>
+  <button class="btn btn-outline-secondary" (click)="clear()">Clear</button>
+</fieldset>
+</div>
 
-              <button class='btn btn-info' [routerLink]= "['/review', hit.doctorID]">Show Reviews</button>
-              <button class='btn btn-secondary' (click)="open(content, hit.doctorID)">Write Review</button>
-          </div>
 
+
+<ol>
+  <div *ngFor="let doctor of Doctors">
+
+    <div class="bg-white rounded shadow-sm p-4 mb-4 restaurant-detailed-ratings-and-reviews">
+        <div class="d-flex w-100 justify-content-between">
+          <h5 class="mb-2">{{ doctor.doctorName }}</h5>
         </div>
-      </ol>
+        <p class="mb-2">Speciality : {{ doctor.category }}</p>
+        <p class="mb-2">Rating : {{ doctor.rating}}</p>
 
-    </ng-template>
+        <button class='btn btn-info' [routerLink]= "['/review', doctor.doctorID]">Show Reviews</button>
+        <button class='btn btn-secondary' (click)="open(content, doctor.doctorID)">Write Review</button>
+    </div>
 
-  </ais-hits>
-</ais-instantsearch>
+  </div>
+</ol>
 
 
 

@@ -1,19 +1,12 @@
 import {ModalDismissReasons, NgbModal} from '@ng-bootstrap/ng-bootstrap';
-import { Component, OnInit } from '@angular/core';
-import { AngularFirestore, AngularFirestoreDocument, AngularFirestoreCollection } from '@angular/fire/firestore';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { AngularFirestore } from '@angular/fire/firestore';
 import 'rxjs/Rx';
 import { Review } from '../model/Review';
 import { Doctor } from '../model/Doctor';
-import algoliasearch from 'algoliasearch/lite';
-import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
-import { Injectable } from '@angular/core';
+import { FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { DatePipe } from '@angular/common';
-
-const searchClient = algoliasearch(
-  'RX0513CCJP',
-  '8c63b17a39153fb510c47a45140c5b12'
-);
 
 @Component({
   selector: 'app-search',
@@ -24,16 +17,15 @@ export class SearchComponent implements OnInit {
   Doctors: Doctor[];
   Reviews: Review[];
 
-  objectDoctor: AngularFirestoreDocument<Doctor>;
-  doctorCollection: AngularFirestoreCollection<Doctor>;
-
-  config = {
-    indexName: 'doctor_search',
-    searchClient
-  };
-
   closeResult='';
   globalCurrentDoctorID = '';
+
+  searchField : string;
+  globalDocumentID : any;
+
+
+  list =  Array<String>();
+
 
   open(content, doctorId: string) {
     this.globalCurrentDoctorID = doctorId;
@@ -56,7 +48,8 @@ export class SearchComponent implements OnInit {
     }
   }
 
-  public reviewForm: FormGroup;
+  
+  
 
   constructor(
     private db: AngularFirestore,
@@ -103,7 +96,6 @@ export class SearchComponent implements OnInit {
       });
   }
 
-
   writeReviewForm = new FormGroup({
     doctorName: new FormControl(),
     rating: new FormControl(),
@@ -111,29 +103,67 @@ export class SearchComponent implements OnInit {
     message: new FormControl(),
   }); 
 
+  
   getDoctorID(doctorId : String){
-    console.log('insertReview_doctorID= ' + doctorId);
     return doctorId;
   }
 
-  onSubmit() {
-       
-    const doctorID = this.globalCurrentDoctorID;
-    const doctorName = this.writeReviewForm.get('doctorName').value;
-    const rating = this.writeReviewForm.get('rating').value;
-    const userName = this.writeReviewForm.get('patientName').value;
-    const message = this.writeReviewForm.get('message').value;
-    const date = new Date();
+onSubmit() {
+  const reviewID = Math.random().toString(36).substr(2, 5);
+  const userID = Math.random().toString(36).substr(2, 5);
+  const doctorID = this.globalCurrentDoctorID;
+  const doctorName = this.writeReviewForm.get('doctorName').value;
+  const newRating = this.writeReviewForm.get('rating').value;
+  const userName = this.writeReviewForm.get('patientName').value;
+  const message = this.writeReviewForm.get('message').value;
+  const date = new Date();
 
-   this.db.collection("reviews")
-    .add({
-      doctorID,
-      doctorName,
-      message,
-      rating, 
-      userName,
-      date });
-   
-}
+ this.db.collection("reviews")
+  .add({
+    reviewID,
+    doctorID,
+    userID,
+    doctorName,
+    rating: newRating, 
+    userName,
+    message,
+    date });   
+
+
+  }
+  
+onSearch(){
+  console.log(this.searchField);
+  this.db
+  .collection("doctors", ref => ref.where("doctorName", "==", this.searchField)) 
+  .snapshotChanges()
+        .subscribe(res => {
+          this.Doctors = res.map(e => {
+            return {
+              id: e.payload.doc.id,
+              ...e.payload.doc.data() as Doctor
+            }
+          })
+        });
+  
+
+ }
+
+    clear(){
+    this.searchField = '';
+    this.db
+    .collection("doctors")
+    .snapshotChanges()
+    .subscribe(res => {
+      this.Doctors = res.map(e => {
+        return {
+          id: e.payload.doc.id,
+          ...e.payload.doc.data() as Doctor
+        }
+      })
+    });
+    }
+
+
   
 }

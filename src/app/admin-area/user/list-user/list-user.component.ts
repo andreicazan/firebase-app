@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { AngularFirestore } from '@angular/fire/firestore';
+import { User } from 'src/app/model/User';
+
+
 
 @Component({
   selector: 'app-list-user',
@@ -6,10 +10,26 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./list-user.component.css']
 })
 export class ListUserComponent implements OnInit {
-
-  constructor() { }
+  Users: User[];
+  userID: any;
+  constructor(private db: AngularFirestore) { }
 
   ngOnInit(): void {
+    this.db
+      .collection("reviewers")
+      .snapshotChanges()
+      .subscribe(res => {
+        this.Users = res.map(e => {
+          return {
+            id: e.payload.doc.id,
+            ...e.payload.doc.data() as User
+          }
+        })
+      });
   }
 
+  removeUser = user => this.db.collection("reviewers").doc(user.id).delete()
 }
+
+
+

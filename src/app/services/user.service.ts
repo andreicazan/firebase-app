@@ -1,6 +1,6 @@
-import { User } from './../model/user.model';
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
+import { User } from '../model/User';
 
 @Injectable({
   providedIn: 'root'
@@ -12,27 +12,27 @@ export class UserService {
 
   getUserDoc(id) {
     return this.db
-    .collection('user-collection')
+    .collection('reviewers')
     .doc(id)
     .valueChanges()
   }
 
   getUserList() { 
     return this.db
-    .collection("user-collection")
+    .collection("reviewers")
     .snapshotChanges();
   }
 
   getUserListFilter(name){
     return this.db
-    .collection("user-collection", filter => filter.where('name', '==', name));
+    .collection("reviewers", filter => filter.where('name', '==', name));
     
   }
 
   createUser(user: User) {
     return new Promise<any>((resolve, reject) =>{
       this.db
-        .collection("user-collection")
+        .collection("reviewers")
         .add(user)
         .then(response => { console.log(response) }, error => reject(error));
     });
@@ -40,14 +40,14 @@ export class UserService {
 
   deleteUser(user) {
     return this.db
-      .collection("user-collection")
+      .collection("reviewers")
       .doc(user.id)
       .delete();
   }
   
   updateUser(user: User, id) {
     return this.db
-      .collection("user-collection")
+      .collection("reviewers")
       .doc(id)
       .update({
         name: user.name,

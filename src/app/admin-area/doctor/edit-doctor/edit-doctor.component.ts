@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
-import { FormBuilder, FormGroup, FormControl } from '@angular/forms';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import 'rxjs/add/operator/map';
+import { Doctor } from 'src/app/model/Doctor';
+import { DoctorInfoService } from 'src/app/services/doctor-info.service';
 
 @Component({
   selector: 'app-edit-doctor',
@@ -9,55 +12,63 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./edit-doctor.component.css']
 })
 export class EditDoctorComponent implements OnInit {
-  formData: FormGroup;
-  id: any;
-  idRef : any;
+  public formData: FormGroup;
+  globalDocumentID : any;
 
-  sub: any;
-  
-
-  constructor(public formBuilder: FormBuilder,
+  constructor(
+    public formBuilder: FormBuilder,
+    private act: ActivatedRoute,
+    private router: Router,
     private db: AngularFirestore,
-    private route: ActivatedRoute) {
+    ) {
+
+      this.formData = this.formBuilder.group({
+     
+        doctorName: [''],
+        category: ['']
+        
+      })
           
    }
-   globalCurrentID = '';
+   
 
   ngOnInit(): void {
-    this.sub = this.route.params.subscribe(params =>{
-      this.globalCurrentID = params['id'];
+    const doctorID = this.act.snapshot.paramMap.get('id');
 
-      this.db.collection("doctors").doc(this.globalCurrentID).valueChanges().subscribe(res =>{
-        this.idRef = res;
-        console.log(res);
-        this.formData = new FormGroup({
-          'doctorName' : this.idRef.doctorName,
-          'category' : this.idRef.category
-  
+    this.db
+      .collection("doctors")
+      .snapshotChanges()
+      .subscribe(res => {
+        res.map(e => {
+          let data = e.payload.doc.data() as Doctor;
+          this.globalDocumentID = e.payload.doc.id;
+          console.log(data)
+          if (data.doctorID == doctorID) {
+            this.formData = this.formBuilder.group({
+
+              doctorName: [data.doctorName],
+              category: [data.category]
+
+            })
+          }})
         })
-     })
+}
 
-    })
 
-    
-   
-    
-
-  }
-
-  private initForm(){
-    this.formData = new FormGroup({
-      'doctorName' : new FormControl()
-    })
-  }
   
-  onSubmit(formData){
-    this.db.collection("doctors")
-    .doc(this.id)
-    .update(
-      formData.value
-    )
+  onSubmit(){
+    const formDoctorName = this.formData.get("doctorName").value;
+    const formCategory = this.formData.get("category").value;
     
+    this.db
+    .collection('doctors')
+    .doc(this.globalDocumentID)    
+    .update({
+      doctorName : formDoctorName,
+      category : formCategory
+    })
+   
+    this.router.navigate(['list-doctor'])
   }
 
 }

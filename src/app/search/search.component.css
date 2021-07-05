@@ -30,3 +30,10 @@
 .card-group{
     display: flex;
 }
+
+.logOut{
+    position:fixed;
+    right:10px;
+    top:20px;
+  }
+  

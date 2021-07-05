@@ -1,0 +1,18 @@
+<button class="btn-secondary" routerLink="/admin">Back</button>
+<button class="btn-primary" routerLink="/create-review">Add Review</button>
+<table class="table">
+    <tbody>
+        <tr *ngFor="let review of Reviews; let i = index">
+            <th scope="row">{{ i + 1 }}</th>
+          <td>{{ review.reviewID }}</td>
+          <td>{{ review.doctorName }}</td>
+          <td>{{ review.userName }}</td>
+          <td>{{ review.message }}</td>
+          <td>{{ review.date.toDate() | date:'yyyy/MM/dd' }}</td>
+
+          <td>
+            <span (click)="removeReview(review)" class="text-danger">Delete</span> &nbsp;
+            
+            <span routerLink="/edit-review/{{review.reviewID}}" class="text-primary">Edit</span>
+          </td>
+</table>

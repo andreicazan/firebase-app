@@ -1,5 +1,5 @@
-<button routerLink="/admin">Back</button>
-<button routerLink="/create-doctor">Add Doctor</button>
+<button class="btn-secondary"routerLink="/admin">Back</button>
+<button class="btn-primary" routerLink="/create-doctor">Add Doctor</button>
 <table class="table">
     <tbody>
         <tr *ngFor="let doctor of Doctors; let i = index">
@@ -8,7 +8,8 @@
           <td>{{ doctor.doctorName }}</td>
           <td>{{ doctor.category }}</td>
           <td>
-            <span (click)="removeUser(doctor)" class="text-danger">Delete</span> &nbsp;
-            <span routerLink="['/edit-doctor', doctor.doctorID" class="text-primary">Edit</span>
+            <span (click)="removeDoctor(doctor)" class="text-danger">Delete</span> &nbsp;
+            
+            <span routerLink="/edit-doctor/{{doctor.doctorID}}" class="text-primary">Edit</span>
           </td>
 </table>

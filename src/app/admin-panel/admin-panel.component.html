@@ -1,10 +1,28 @@
+<button routerLink="/signup" class="logOut btn btn-light">Log Out</button>
+<h2 style="text-align: center;">Admin Panel</h2>
 
-<span class="mb-12">
-<button routerLink="/list-user">Reviewers</button>
-<button routerLink="/list-review">Reviews</button>
-<button routerLink="/list-doctor">Doctors</button>
-</span>
+<div class="container">
+    
+    <div class="row">
+      <div class="col-sm">
+        <button class="btn col-md-12 btn-info" routerLink="/list-user" >Users</button>
+      </div>
+      <div class="col-sm">
+        <button class="btn col-md-12 btn-info" routerLink="/list-review">Reviews</button>
+      </div>
+      <div class="col-sm">
+        <button class="btn col-md-12 btn-info" routerLink="/list-doctor">Doctors</button>
+      </div>
+    </div>
+  </div>
 
 
-
-<!--  class="nav-link" routerLink="/signup" -->
+  <footer amp-fx="float-in-bottom"
+  class="bg-light text-center text-lg-start" id="footer">
+   
+    <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+      © 2021 Copyright:
+      <a class="text-dark">Doctor Review</a>
+    </div>
+   
+  </footer>
