@@ -32,7 +32,7 @@ export class CreateUserComponent implements OnInit {
 
     const userID = Math.random().toString(36).substr(2, 5);
     
-    this.db.collection("reviewers")
+    this.db.collection("users")
     .add({
       userID,
       name,

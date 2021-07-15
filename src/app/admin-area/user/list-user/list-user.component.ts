@@ -16,7 +16,7 @@ export class ListUserComponent implements OnInit {
 
   ngOnInit(): void {
     this.db
-      .collection("reviewers")
+      .collection("users")
       .snapshotChanges()
       .subscribe(res => {
         this.Users = res.map(e => {
@@ -28,7 +28,7 @@ export class ListUserComponent implements OnInit {
       });
   }
 
-  removeUser = user => this.db.collection("reviewers").doc(user.id).delete()
+  removeUser = user => this.db.collection("users").doc(user.id).delete()
 }
 
 

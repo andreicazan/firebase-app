@@ -19,16 +19,20 @@ export class SearchComponent implements OnInit {
 
   closeResult='';
   globalCurrentDoctorID = '';
+  globalCurrentDoctorName = '';
 
   searchField : string;
   globalDocumentID : any;
 
 
+
   list =  Array<String>();
 
 
-  open(content, doctorId: string) {
+  open(content, doctorId: string, doctorName: string) {
     this.globalCurrentDoctorID = doctorId;
+    this.globalCurrentDoctorName = doctorName;
+    
     this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
       this.closeResult = `Closed with: ${result}`;
      

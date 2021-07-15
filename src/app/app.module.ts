@@ -31,6 +31,7 @@ import { EditUserComponent } from './admin-area/user/edit-user/edit-user.compone
 import { ListDoctorComponent } from './admin-area/doctor/list-doctor/list-doctor.component';
 import { EditDoctorComponent } from './admin-area/doctor/edit-doctor/edit-doctor.component';
 import { CreateDoctorComponent } from './admin-area/doctor/create-doctor/create-doctor.component';
+import { StreamDataComponent } from './stream-data/stream-data.component';
 
 @NgModule({
   declarations: [
@@ -49,7 +50,8 @@ import { CreateDoctorComponent } from './admin-area/doctor/create-doctor/create-
     EditUserComponent,
     ListDoctorComponent,
     EditDoctorComponent,
-    CreateDoctorComponent
+    CreateDoctorComponent,
+    StreamDataComponent
   ],
   imports: [
     BrowserModule,

@@ -33,7 +33,7 @@ export class EditUserComponent implements OnInit {
     console.log(UserID)
 
     this.db
-      .collection("reviewers")
+      .collection("users")
       .snapshotChanges()
       .subscribe(res => {
         res.map(e => {
@@ -62,7 +62,7 @@ export class EditUserComponent implements OnInit {
     console.log(this.globalDocumentID)
     
     this.db
-    .collection('reviewers')
+    .collection('users')
     .doc(this.globalDocumentID)    
     .update({
       name : formUserName,

@@ -1,0 +1,21 @@
+<ul>
+    <li *ngFor="let item of items | async">
+      {{ item.name }} is {{ item.price}}
+    </li>
+</ul>
+
+<input type="text" value="Sarah">
+
+<button [disabled]="isDisabled">Test Button</button><br>
+
+<input [(ngModel)]="name"> 
+
+<h5>{{customerName}}</h5> 
+<button (click)="updateName()">Update button</button>
+
+
+<div>Enter the value  : <input [(ngModel)] ='val'> 
+               <br> 
+                Entered value is:  {{val}} 
+
+              </div>

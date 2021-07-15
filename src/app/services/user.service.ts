@@ -12,27 +12,27 @@ export class UserService {
 
   getUserDoc(id) {
     return this.db
-    .collection('reviewers')
+    .collection('users')
     .doc(id)
     .valueChanges()
   }
 
   getUserList() { 
     return this.db
-    .collection("reviewers")
+    .collection("users")
     .snapshotChanges();
   }
 
   getUserListFilter(name){
     return this.db
-    .collection("reviewers", filter => filter.where('name', '==', name));
+    .collection("users", filter => filter.where('name', '==', name));
     
   }
 
   createUser(user: User) {
     return new Promise<any>((resolve, reject) =>{
       this.db
-        .collection("reviewers")
+        .collection("users")
         .add(user)
         .then(response => { console.log(response) }, error => reject(error));
     });
@@ -40,14 +40,14 @@ export class UserService {
 
   deleteUser(user) {
     return this.db
-      .collection("reviewers")
+      .collection("users")
       .doc(user.id)
       .delete();
   }
   
   updateUser(user: User, id) {
     return this.db
-      .collection("reviewers")
+      .collection("users")
       .doc(id)
       .update({
         name: user.name,

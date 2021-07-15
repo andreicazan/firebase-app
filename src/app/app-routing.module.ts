@@ -17,6 +17,7 @@ import { CreateUserComponent } from './admin-area/user/create-user/create-user.c
 import { ListDoctorComponent } from './admin-area/doctor/list-doctor/list-doctor.component';
 import { EditDoctorComponent } from './admin-area/doctor/edit-doctor/edit-doctor.component';
 import { CreateDoctorComponent } from './admin-area/doctor/create-doctor/create-doctor.component';
+import { StreamDataComponent } from './stream-data/stream-data.component';
 
 
 const routes: Routes = [
@@ -39,6 +40,8 @@ const routes: Routes = [
   { path: 'list-doctor', component: ListDoctorComponent },
   { path: 'edit-doctor/:id', component: EditDoctorComponent },
   { path: 'create-doctor', component: CreateDoctorComponent },
+  
+  { path: 'data', component: StreamDataComponent },
 
 ];
 

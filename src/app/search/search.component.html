@@ -23,7 +23,7 @@
         <p class="mb-2">Rating : {{ doctor.rating}}</p>
 
         <button class='btn btn-info' [routerLink]= "['/review', doctor.doctorID]">Show Reviews</button>
-        <button class='btn btn-secondary' (click)="open(content, doctor.doctorID)">Write Review</button>
+        <button class='btn btn-secondary' (click)="open(content, doctor.doctorID, doctor.doctorName)">Write Review</button>
     </div>
 
   </div>
