@@ -18,6 +18,9 @@ import { ListDoctorComponent } from './admin-area/doctor/list-doctor/list-doctor
 import { EditDoctorComponent } from './admin-area/doctor/edit-doctor/edit-doctor.component';
 import { CreateDoctorComponent } from './admin-area/doctor/create-doctor/create-doctor.component';
 import { StreamDataComponent } from './stream-data/stream-data.component';
+import { HttpDataComponent } from './http-data/http-data.component';
+import { ChildComponent } from './child/child.component';
+import { ParentComponent } from './parent/parent.component';
 
 
 const routes: Routes = [
@@ -42,6 +45,9 @@ const routes: Routes = [
   { path: 'create-doctor', component: CreateDoctorComponent },
   
   { path: 'data', component: StreamDataComponent },
+  { path: 'http', component: HttpDataComponent },
+  { path: 'child', component: ChildComponent },
+  { path: 'parent', component: ParentComponent },
 
 ];
 
