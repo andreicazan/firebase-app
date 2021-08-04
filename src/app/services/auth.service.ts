@@ -3,15 +3,33 @@ import { Router } from '@angular/router';
 import * as firebase from 'firebase/app';
 import 'rxjs/add/operator/switchMap';
 import { AngularFireAuth } from '@angular/fire/auth';
+import { Observable } from 'rxjs/Observable';
+import { HttpClient } from '@angular/common/http';
+
+interface SuccessResponse {
+  token: string;
+  user: any; // should change any to your user type
+}
+
+interface FailureResponse {
+  success: false;
+  msg: string;
+}
+
+type AuthResponse = SuccessResponse | FailureResponse;
 
 @Injectable({
   providedIn: 'root'
 })
+
 export class AuthService {
+  
+  static Token: string;
 
   constructor(
     private auth: AngularFireAuth,
-    private router: Router) { }
+    private router: Router,
+    private http: HttpClient) { }
 
   login(email: string, password: string) {
     this.auth.signInWithEmailAndPassword(email, password)
@@ -57,4 +75,11 @@ export class AuthService {
   private oAuthLogin(provider) {
     return this.auth.signInWithPopup(provider);
   }
+
+
+  authenticateUser(user): Observable<AuthResponse> {
+    // header for content-type is not needed
+    return this.http.post<AuthResponse>('http://localhost:3000/users/authenticate', user);
+}
+
 }

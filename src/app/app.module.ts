@@ -32,9 +32,17 @@ import { ListDoctorComponent } from './admin-area/doctor/list-doctor/list-doctor
 import { EditDoctorComponent } from './admin-area/doctor/edit-doctor/edit-doctor.component';
 import { CreateDoctorComponent } from './admin-area/doctor/create-doctor/create-doctor.component';
 import { StreamDataComponent } from './stream-data/stream-data.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ChildComponent } from './child/child.component';
 import { ParentComponent } from './parent/parent.component';
+import { FunctionsComponent } from './functions/functions.component';
+import { DrawerComponent } from './drawer/drawer.component';
+import { ParentDrawerComponent } from './parent-drawer/parent-drawer.component';
+import { GenericComponent } from './Generics/generic/generic.component';
+import { InterceptorComponent } from './interceptors/components/interceptor/interceptor.component';
+import { ViewEncapsulationComponent } from './view-encapsulation/view-encapsulation.component';
+import { ViewEncapsulationChildComponent } from './view-encapsulation-child/view-encapsulation-child.component';
+
 
 
 @NgModule({
@@ -57,7 +65,15 @@ import { ParentComponent } from './parent/parent.component';
     CreateDoctorComponent,
     StreamDataComponent,
     ChildComponent,
-    ParentComponent
+    ParentComponent,
+    FunctionsComponent,
+    DrawerComponent,
+    ParentDrawerComponent,
+    GenericComponent,
+    InterceptorComponent,
+    ViewEncapsulationComponent,
+    ViewEncapsulationChildComponent,
+
     
   ],
   imports: [
@@ -78,7 +94,8 @@ import { ParentComponent } from './parent/parent.component';
    
     
   ],
-  providers: [ DatePipe],
+  providers: [ DatePipe, {provide: HTTP_INTERCEPTORS, useClass: InterceptorComponent, multi:true}],
+  // providers: [ DatePipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -6,14 +6,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./parent.component.css']
 })
 export class ParentComponent implements OnInit {
-  firstName: string;
-  lastName: string;
+  name: string;
+  password: string;
   siblings: Array<string>;
   constructor() { }
 
   ngOnInit(): void {
-    this.firstName = 'John';
-    this.lastName = 'Doe';
+    this.name = 'John';
+    this.password = 'Doe';
     this.siblings = new Array<string>('Jane', 'Jack', 'Sophie');
   }
 

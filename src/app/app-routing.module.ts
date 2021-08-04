@@ -21,6 +21,13 @@ import { StreamDataComponent } from './stream-data/stream-data.component';
 import { HttpDataComponent } from './http-data/http-data.component';
 import { ChildComponent } from './child/child.component';
 import { ParentComponent } from './parent/parent.component';
+import { FunctionsComponent } from './functions/functions.component';
+import { DrawerComponent } from './drawer/drawer.component';
+import { ParentDrawerComponent } from './parent-drawer/parent-drawer.component';
+import { InterceptorComponent } from './interceptors/components/interceptor/interceptor.component';
+import { ViewEncapsulationComponent } from './view-encapsulation/view-encapsulation.component';
+import { ViewEncapsulationChildComponent } from './view-encapsulation-child/view-encapsulation-child.component';
+
 
 
 const routes: Routes = [
@@ -46,8 +53,21 @@ const routes: Routes = [
   
   { path: 'data', component: StreamDataComponent },
   { path: 'http', component: HttpDataComponent },
+  
   { path: 'child', component: ChildComponent },
   { path: 'parent', component: ParentComponent },
+  
+  { path: 'functions', component: FunctionsComponent },
+  
+  { path: 'parent-drawer', component: ParentDrawerComponent },
+  { path: 'drawer', component: DrawerComponent },
+
+  { path: 'interceptor', component: InterceptorComponent },
+  
+  { path: 'view-encapsulation', component: ViewEncapsulationComponent },
+  { path: 'view-encapsulation-child', component: ViewEncapsulationChildComponent },
+  
+
 
 ];
 
