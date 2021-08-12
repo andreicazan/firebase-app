@@ -27,6 +27,8 @@ import { ParentDrawerComponent } from './parent-drawer/parent-drawer.component';
 import { InterceptorComponent } from './interceptors/components/interceptor/interceptor.component';
 import { ViewEncapsulationComponent } from './view-encapsulation/view-encapsulation.component';
 import { ViewEncapsulationChildComponent } from './view-encapsulation-child/view-encapsulation-child.component';
+import { ChangeDetectionComponent } from './change-detection/change-detection.component';
+import { NewsletterComponent } from './change-detection/newsletter.component';
 
 
 
@@ -66,6 +68,9 @@ const routes: Routes = [
   
   { path: 'view-encapsulation', component: ViewEncapsulationComponent },
   { path: 'view-encapsulation-child', component: ViewEncapsulationChildComponent },
+  
+  { path: 'change-detection', component: ChangeDetectionComponent },
+  { path: 'change-detection/newsletter', component: NewsletterComponent },
   
 
 

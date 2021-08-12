@@ -10,12 +10,13 @@ export class ChildComponent implements OnInit {
   constructor() { }
   @Input() name: string;
   @Input() password: string;
-  @Input() siblings: Array<string>;
+  
 
   ngOnInit(): void {
     this.name = "Child Mihai"
     this.password = "randomPas"
-    this.siblings = new Array<string>('son1');
+    
   }
 
 }
+ 

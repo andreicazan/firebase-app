@@ -42,6 +42,7 @@ import { GenericComponent } from './Generics/generic/generic.component';
 import { InterceptorComponent } from './interceptors/components/interceptor/interceptor.component';
 import { ViewEncapsulationComponent } from './view-encapsulation/view-encapsulation.component';
 import { ViewEncapsulationChildComponent } from './view-encapsulation-child/view-encapsulation-child.component';
+import { ChangeDetectionComponent } from './change-detection/change-detection.component';
 
 
 
@@ -73,6 +74,7 @@ import { ViewEncapsulationChildComponent } from './view-encapsulation-child/view
     InterceptorComponent,
     ViewEncapsulationComponent,
     ViewEncapsulationChildComponent,
+    ChangeDetectionComponent,
 
     
   ],
